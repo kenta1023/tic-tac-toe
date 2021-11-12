@@ -1,50 +1,44 @@
-a=['a0','a1','a2']
-b=['b0','b1','b2']
-c=['c0','c1','c2']
+a=['0','1','2','3','4','5','6','7','8']
 count=0
 judge=False
 
-def game(a,b,c):
-    column=input('列を入力してください:')
-    row=int(input('行を入力してください:'))
+def game(a):
+    place=int(input('場所を選択してください:'))
     if count%2 !=0:
         MorB='○'
     else:
-        MorB='×'
-    if column=='a':
-        a[row]=MorB
-    elif column=='b':
-        b[row]=MorB
-    else:
-        c[row]=MorB
-    return a,b,c
+        MorB='×'    
+    a[place]=MorB
+    return a
 
-def check(a,b,c,judge):
-    ca=a[0]==a[1]==a[2]
-    cb=b[0]==b[1]==b[2]
-    cc=c[0]==b[1]==b[2]
-    c0=a[0]==b[0]==c[0]
-    c1=a[1]==b[1]==c[1]
-    c2=a[2]==b[2]==c[2]
-    cr=a[0]==b[1]==c[2]
-    cl=a[2]==b[1]==c[0]
-    if ca or cb or cc or c0 or c1 or c2 or cr or cl:
+def check(a,judge):
+    cb1=a[0]==a[1]==a[2]
+    cb2=a[3]==a[4]==a[5]
+    cb3=a[6]==a[7]==a[8]
+    cv1=a[0]==a[3]==a[6]
+    cv2=a[1]==a[4]==a[7]
+    cv3=a[2]==a[5]==a[8]
+    cr=a[0]==a[4]==a[8]
+    cl=a[2]==a[4]==a[6]
+    if cb1 or cb2 or cb3 or cv1 or cv2 or cv3 or cr or cl:
         judge=True
     return judge
+
+
 
 print('まるばつゲームスタート')
 print('\n',
       '|',a[0],'|',a[1],'|',a[2],'|','\n',
-      '|',b[0],'|',b[1],'|',b[2],'|','\n',
-      '|',c[0],'|',c[1],'|',c[2],'|','\n',)
+      '|',a[3],'|',a[4],'|',a[5],'|','\n',
+      '|',a[6],'|',a[7],'|',a[8],'|','\n',)
 while judge==False and count!=9:
-    game(a,b,c)
+    game(a)
     count +=1
     print('\n',
           '|',a[0],'|',a[1],'|',a[2],'|','\n',
-          '|',b[0],'|',b[1],'|',b[2],'|','\n',
-          '|',c[0],'|',c[1],'|',c[2],'|','\n',)
-    judge=check(a,b,c,judge)
+          '|',a[3],'|',a[4],'|',a[5],'|','\n',
+          '|',a[6],'|',a[7],'|',a[8],'|','\n',)
+    judge=check(a,judge)
 if judge:
     if count%2 !=0:
         print('先行（×）の勝利')
