@@ -3,20 +3,11 @@ count=0
 judge=False
 placelist=[]
 
-<<<<<<< HEAD
-def game(a):
-    place=int(input('場所を選択してください:'))
-    if count%2 !=0:
-        MorB='○'
-    else:
-        MorB='×'    
-    a[place]=MorB
-=======
 def game(a,placelist):
     skip=True
     while skip==True:
         place=input('場所を選択してください:')
-        if place not in ['0','1','2','3','4','5','6','7','8','9']:
+        if place not in ['0','1','2','3','4','5','6','7','8']:
             print('無効な入力値です。場所を再度入力しなおしてください。')
             skip=True
             continue
@@ -32,7 +23,6 @@ def game(a,placelist):
         a[place]=MorB
         placelist.append(place)
         skip=False
->>>>>>> d8de1f19225a92bd40eb8815d6cdf979e28ade86
     return a
 
 def check(a,judge):
@@ -56,11 +46,7 @@ print('\n',
       '|',a[3],'|',a[4],'|',a[5],'|','\n',
       '|',a[6],'|',a[7],'|',a[8],'|','\n',)
 while judge==False and count!=9:
-<<<<<<< HEAD
-    game(a)
-=======
     game(a,placelist)
->>>>>>> d8de1f19225a92bd40eb8815d6cdf979e28ade86
     count +=1
     print('\n',
           '|',a[0],'|',a[1],'|',a[2],'|','\n',
