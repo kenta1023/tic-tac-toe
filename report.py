@@ -23,7 +23,7 @@ def game(a,placelist):
         a[place]=MorB
         placelist.append(place)
         skip=False
-    return a
+    return a,placelist
 
 def check(a,judge):
     cb1=a[0]==a[1]==a[2]
